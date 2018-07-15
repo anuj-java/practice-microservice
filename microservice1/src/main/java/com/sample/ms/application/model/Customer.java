@@ -10,6 +10,9 @@ public class Customer {
     private Integer age;
     private String gender;
 
+    public Customer() {
+    }
+
     public Customer(String name, Address address, Integer age, String gender) {
         this.name = name;
         this.address = address;
