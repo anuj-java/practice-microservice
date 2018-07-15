@@ -1,0 +1,5 @@
+microservice1:
+  image: practice-microservice/microservice1:0.1.0
+  container_name: microservice1
+  ports:
+    - "8780:8780"
