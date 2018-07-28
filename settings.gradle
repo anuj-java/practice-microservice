@@ -1,1 +1,2 @@
 include 'microservice1'
+include 'microservice2'

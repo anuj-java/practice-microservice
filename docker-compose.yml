@@ -3,3 +3,9 @@ microservice1:
   container_name: microservice1
   ports:
     - "8780:8780"
+    
+microservice2:
+  image: practice-microservice/microservice2:0.1.0
+  container_name: microservice2
+  ports:
+    - "8781:8781"
