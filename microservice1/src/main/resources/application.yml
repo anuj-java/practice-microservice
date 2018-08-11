@@ -1,0 +1,39 @@
+server:
+  port: 8780
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    naming:
+      implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+      physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+    password: p4SSW0rd
+    driver: com.mysql.jdbc.Driver
+    initialize: false
+---
+spring:
+  profiles: container
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    naming:
+      implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+      physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    driver: com.mysql.jdbc.Driver
+    initialize: false
