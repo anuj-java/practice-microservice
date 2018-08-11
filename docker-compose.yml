@@ -1,9 +1,32 @@
+database:
+  image: mysql
+  container_name: demo-mysql
+#  command: mysqld --user=root --verbose
+#  volumes:
+#  - ./dbcreation.sql:/tmp/dbcreation.sql
+#  - ./import.sh:/tmp/import.sh
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: "demo"
+    MYSQL_USER: "dbuser"
+    MYSQL_PASSWORD: "dbp4ss"
+    MYSQL_ROOT_PASSWORD: "p4SSW0rd"
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 microservice1:
   image: practice-microservice/microservice1:0.1.0
   container_name: microservice1
   ports:
     - "8780:8780"
-    
+  links:
+    - database
+  environment:
+    DATABASE_HOST: "demo-mysql"
+    DATABASE_USER: "dbuser"
+    DATABASE_PASSWORD: "dbp4ss"
+    DATABASE_NAME: "demo"
+    DATABASE_PORT: "3306"
+
 microservice2:
   image: practice-microservice/microservice2:0.1.0
   container_name: microservice2
